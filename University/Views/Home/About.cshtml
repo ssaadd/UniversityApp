@@ -1,0 +1,16 @@
+﻿@{
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "_Layout";
+    }
+    else
+    {
+        Layout = "_Layin";
+    }
+    ViewData["Title"] = "О нас";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>Высшее учреждение образования.</p>

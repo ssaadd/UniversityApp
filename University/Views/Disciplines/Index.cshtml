@@ -1,0 +1,101 @@
+﻿@using University.Models
+@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Главная";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Дисциплины</h2>
+
+<p>
+    <a asp-action="Create">Добавить запись</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    <a asp-action="Index" asp-route-sortUniversity="@(Model.SortViewModel.NameDisciplineSort)">
+                        Наименование
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortUniversity="@(Model.SortViewModel.NumberOfHoursOfLecturesSort)">
+                        Количество часов лекций
+                        </a>
+</th>
+                <th>
+                    <a asp-action="Index" asp-route-sortUniversity="@(Model.SortViewModel.NumberOfHoursOfPracticeSort)">
+                        Количество часов практик
+                    </a>
+                </th>
+            <th>
+                <a asp-action="Index" asp-route-sortUniversity="@(Model.SortViewModel.TypeOfRportingSort)">
+                    Вид отчетности
+                </a>
+            </th>
+            <th>
+                Наименование специальности
+            </th>
+            <th>
+                И.О преподавателя
+            </th>
+            <th>
+                Тип дисциплины
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Disciplines)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameDiscipline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfHoursOfLectures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfHoursOfPractice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfRporting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialty.NameSpecialty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teachers.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfDiscipline.NameTypeOfDiscipline)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DisciplineID">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.DisciplineID">Подробно</a> |
+                <a asp-action="Delete" asp-route-id="@item.DisciplineID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       asp-route-sortUniversity="@(Model.SortViewModel.Current)"
+       class="btn btn-default btn">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       asp-route-sortUniversity="@(Model.SortViewModel.Current)"
+       class="btn btn-default btn">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}

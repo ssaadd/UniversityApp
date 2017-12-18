@@ -1,0 +1,65 @@
+﻿@model University.Models.Discipline
+
+@{
+    ViewData["Title"] = "Изменить";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Редактировать</h2>
+
+<h4>Дисциплины</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DisciplineID" />
+            <div class="form-group">
+                <label asp-for="NameDiscipline" class="control-label"></label>
+                <input asp-for="NameDiscipline" class="form-control" />
+                <span asp-validation-for="NameDiscipline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfHoursOfLectures" class="control-label"></label>
+                <input asp-for="NumberOfHoursOfLectures" class="form-control" />
+                <span asp-validation-for="NumberOfHoursOfLectures" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfHoursOfPractice" class="control-label"></label>
+                <input asp-for="NumberOfHoursOfPractice" class="form-control" />
+                <span asp-validation-for="NumberOfHoursOfPractice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfRporting" class="control-label"></label>
+                <input asp-for="TypeOfRporting" class="form-control" />
+                <span asp-validation-for="TypeOfRporting" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teachers.FullName" class="control-label"></label>
+                <select asp-for="TeacherID" class="form-control" asp-items="ViewBag.TeacherID"></select>
+               
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfDiscipline.NameTypeOfDiscipline" class="control-label"></label>
+                <select asp-for="TypeOfDisciplineID" class="form-control" asp-items="ViewBag.TypeOfDisciplineID"></select>
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="Specialty.NameSpecialty" class="control-label"></label>
+                <select asp-for="SpecialtyID" class="form-control" asp-items="ViewBag.SpecialtyID"></select>
+                
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Обратно к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

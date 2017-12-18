@@ -1,0 +1,68 @@
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Отдел кадров</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Дисциплина
+            </th>
+            <th>
+                ИО преподавателя
+            </th>
+            <th>
+                Телефон
+            </th>
+            <th>
+                Должность
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Disciplines)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameDiscipline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teachers.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teachers.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teachers.Position)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="btn btn-default btn">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="btn btn-default btn">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}
+
+

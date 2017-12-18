@@ -1,0 +1,87 @@
+﻿@using University.Models
+@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Дисциплины</h2>
+<form method="get">
+    <div class="form-horizontal form-group">
+        <label class="control-label">Назание специальности: </label>
+        @Html.TextBox("nameSpecialty", Model.FiltrViewModel.NameSpecialty, htmlAttributes: new { @class = "form-control" })
+
+        <label class="control-label">Курс: </label>
+        @Html.TextBox("course", Model.FiltrViewModel.Course, htmlAttributes: new { @class = "form-control" })
+
+        <label class="control-label">Семестр: </label>
+        @Html.TextBox("semester", Model.FiltrViewModel.Semester, htmlAttributes: new { @class = "form-control" })
+
+
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Дисциплина
+            </th>
+            <th>
+                Наименование специальности
+            </th>
+            <th>
+                Курс
+            </th>
+            <th>
+                Семестр
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Disciplines)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameDiscipline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialty.NameSpecialty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialty.Course)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialty.Semester)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       asp-route-distipline="@(Model.FiltrViewModel.Disciplines)"
+       asp-route-course="@(Model.FiltrViewModel.Course)"
+       asp-route-semester="@(Model.FiltrViewModel.Semester)"
+       asp-route-name="@(Model.FiltrViewModel.NameSpecialty)"
+       class="btn btn-default btn">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       asp-route-distipline="@(Model.FiltrViewModel.Disciplines)"
+       asp-route-course="@(Model.FiltrViewModel.Course)"
+       asp-route-semester="@(Model.FiltrViewModel.Semester)"
+       asp-route-name="@(Model.FiltrViewModel.NameSpecialty)"
+       class="btn btn-default btn">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}

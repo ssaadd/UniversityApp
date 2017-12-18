@@ -1,0 +1,43 @@
+﻿@model University.Models.Specialty
+
+@{
+    ViewData["Title"] = "Подробно";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Подробно</h2>
+
+<div>
+    <h4>Специальность</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameSpecialty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameSpecialty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Course)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Course)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Semester)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Semester)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pulpit.NamePulpit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pulpit.NamePulpit)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SpecialtyID">Редактировать</a> |
+    <a asp-action="Index">Вернуться к списку</a>
+</div>

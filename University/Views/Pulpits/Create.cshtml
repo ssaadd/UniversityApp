@@ -1,0 +1,43 @@
+﻿@model University.Models.Pulpit
+
+@{
+    ViewData["Title"] = "Добавить запись";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Создать</h2>
+
+<h4>Кафедра</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NamePulpit" class="control-label"></label>
+                <input asp-for="NamePulpit" class="form-control" />
+                <span asp-validation-for="NamePulpit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KindOfChair" class="control-label"></label>
+                <input asp-for="KindOfChair" class="form-control" />
+                <span asp-validation-for="KindOfChair" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Faculty.NameFaculty" class="control-label"></label>
+                <select asp-for="FacultyID" class ="form-control" asp-items="ViewBag.FacultyID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

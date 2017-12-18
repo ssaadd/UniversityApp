@@ -1,0 +1,61 @@
+﻿@model University.Models.Discipline
+@{
+    ViewData["Title"] = "Удалить";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Удаление</h2>
+<h3>Вы действительно хотите удалить это?</h3>
+<div>
+    <h4>Дисциплины</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameDiscipline)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameDiscipline)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfLectures)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfHoursOfLectures)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfPractice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfHoursOfPractice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfRporting)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfRporting)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialty.NameSpecialty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Specialty.NameSpecialty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Teachers.FullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Teachers.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfDiscipline.NameTypeOfDiscipline)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfDiscipline.NameTypeOfDiscipline)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="DisciplineID" />
+        <input type="submit" value="Удалить" class="btn btn-default" /> |
+        <a asp-action="Index">Обратно к списку</a>
+    </form>
+</div>

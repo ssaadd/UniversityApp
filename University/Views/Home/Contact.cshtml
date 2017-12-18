@@ -1,0 +1,27 @@
+﻿@{
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "_Layout";
+    }
+    else
+    {
+        Layout = "_Layin";
+    }
+    ViewData["Title"] = "Контакты";
+}
+
+
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<address>
+  <br>Контакты<br />
+    Главный корпус, пр-т Речицкий<br />
+    <abbr title=Телефон">Тел:</abbr>
+    865-99 98
+</address>
+
+<address>
+    <strong>Ректорат:</strong> <a href="mailto:University@example.com">University@example.com</a><br />
+    <strong>Отдел кадров:</strong> <a href="mailto:Kadr@example.com">Kadr@example.com</a>
+</address>

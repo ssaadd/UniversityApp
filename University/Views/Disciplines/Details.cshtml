@@ -1,0 +1,61 @@
+﻿@model University.Models.Discipline
+
+@{
+    ViewData["Title"] = "Подробно";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Подробно</h2>
+
+<div>
+    <h4>Дисциплины</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameDiscipline)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameDiscipline)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfLectures)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfHoursOfLectures)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfHoursOfPractice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfHoursOfPractice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfRporting)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfRporting)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialty.NameSpecialty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Specialty.NameSpecialty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Teachers.FullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Teachers.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfDiscipline.NameTypeOfDiscipline)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfDiscipline.NameTypeOfDiscipline)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.DisciplineID">Редактировать</a> |
+    <a asp-action="Index">Обратно к списку</a>
+</div>
